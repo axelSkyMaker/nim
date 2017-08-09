@@ -22,19 +22,14 @@ var nim = (() => {
         stateSpace[0][1][0] = 1;
     }
     var stateSp = stateSpace();
-    updateStateSpace(stateSp);
+    // updateStateSpace(stateSp);
 
     var findBestMidMove = (midArr)=>{
         var midBest = midArr.map(function(lastArr){
-            var indexAndValueOfLastMaxValue = lastArr.reduce((iMax, x, i, arr) => {
-                console.log("x", x);
-                return (x > arr[iMax.index]) ? {index:i, value:x} : iMax;}, 
-                {index:0, value:0});
-            return indexAndValueOfLastMaxValue;
+            return findBestLastMove(lastArr);
         })
-        .sort((obj1, obj2)=>obj1.value < obj2.value)[0];
         console.log("midBest", midBest);
-        // var indexOfLastMaxValue = lastArr.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
+
         return midBest;
     };
 
