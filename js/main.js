@@ -27,11 +27,26 @@ var nim = (() => {
     var findBestMidMove = (midArr)=>{
         var midBest = midArr.map(function(lastArr){
             return findBestLastMove(lastArr);
-        })
-        console.log("midBest", midBest);
-
-        return midBest;
+        });
+	var valueArr = midBest.map(obj=>obj.value);	
+	var bestIndex = indexOfHighestValue(valueArr);
+        return bestIndex;
     };
+
+    var indexOfHighestValue = function( array ){
+	return array.reduce(function(imax, x, index, arr){
+
+		if(x > arr[imax]){
+			return index;
+
+		}
+		else {
+			return imax;
+
+		}
+	},0);
+	
+    }
 
     
     var findBestLastMove = (lastArr)=>{
@@ -42,6 +57,8 @@ var nim = (() => {
         // var indexOfLastMaxValue = lastArr.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
         return indexAndValueOfLastMaxValue;
     };
+
+
     
     
     

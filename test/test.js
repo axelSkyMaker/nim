@@ -22,7 +22,7 @@ describe("test of winning moves", function(){
     stateSpace[0][1][2] = 3;
     var midArr = nim.stateSpace[0];
     var myMove = nim.findBestMidMove(midArr);
-	  expect(myMove.index).to.equal(1);
+	  expect(myMove).to.equal(1);
   });
    it("makeMove should find find optimal in last list", function(){
     var stateSpace = nim.stateSpace;
